@@ -1,0 +1,38 @@
+#this file contains popular graphs
+
+#Petersen Graph
+edges:=[];
+for i in [1..4] do
+Add(edges,[i,i+1]);
+Add(edges,[i,5+i]);
+od;
+Add(edges,[1,5]);
+Add(edges,[5,10]);
+Add(edges,[6,8]);
+for i in [1..2] do
+Add(edges,[5+i,7+i]);
+Add(edges,[5+i,8+i]);
+od;
+Add(edges,[8,10]);
+copy:=StructuralCopy(edges);
+for e in copy do
+Add(edges,[e[2],e[1]]);
+od;
+PetersenGraph:=DigraphByEdges(edges);
+
+#Desargues Graph
+edges:=[];
+for i in [1..10] do
+Add(edges,[i,(i mod 10) +1]);
+Add(edges, [i, i+10]);
+if i+10+3 <= 20 then
+Add(edges,[i+10,i+10+3]);
+else
+Add(edges,[i+10,i+3]);
+fi;
+od;
+copy:=StructuralCopy(edges);
+for e in copy do
+Add(edges,[e[2],e[1]]);
+od;
+DesarguesGraph:=DigraphByEdges(edges);
